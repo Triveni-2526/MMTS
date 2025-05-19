@@ -2,19 +2,13 @@ package com.ticket.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.irctc.binding.PassengerBinding;
-import com.irctc.binding.TicketBinding;
+import com.ticket.binding.PassangerBinding;
+import com.ticket.binding.TicketBinding;
 import com.ticket.service.MmtService;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import java.awt.*;
 
 @RestController
 @RequestMapping("/mmt")
@@ -28,8 +22,9 @@ public class MmtController {
 	}
 
 	@PostMapping("/bookTicket")
-	public ResponseEntity<TicketBinding> bookTicketFromController(@RequestBody PassengerBinding passenger) {
-		TicketBinding ticketInfo = mmtService.bookTicket()
+	public ResponseEntity<TicketBinding> bookTicketFromController(@RequestBody PassangerBinding passenger) {
+		TicketBinding ticketInfo = mmtService.bookTicket();
+		System.out.println("1st line");
 		return new ResponseEntity<TicketBinding>(ticketInfo, HttpStatus.OK);
 	}
 
